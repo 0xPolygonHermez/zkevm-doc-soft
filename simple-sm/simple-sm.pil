@@ -1,0 +1,50 @@
+constant %N = 16;
+
+namespace Global(%N);
+    pol constant L1; // [1, 0, ..., 0]
+
+namespace Rom(%N);
+
+    // ROM constant polynomials
+    pol constant CONST;
+    pol constant inA, inB, inFREE, setA, setB;
+    pol constant JMPZ, JMP;
+    pol constant offset;
+    pol constant line;
+
+namespace Main(%N);
+
+    // Pure trace polynomials
+    pol commit A, B;
+    pol commit FREE;
+    pol commit invOp;
+
+    // Instruction polynomials in the trace
+    pol commit CONST;
+    pol commit inA, inB, inFREE, setA, setB;
+    pol commit JMPZ, JMP, offset;
+    pol commit zkPC;
+
+    // Constant Polynomials for public output
+    pol constant L16; // [0, ..., 0, 1]
+
+    pol op = inA * A + inB * B + inFREE * FREE + CONST;
+    A' = A + setA * (op - A);
+    B' = B + setB * (op - B);
+
+    // Jumps relationships
+    pol isZero = 1 - op * invOp;
+    pol addr = offset;
+    isZero * op = 0;
+    pol doJMP = JMPZ * isZero + JMP;
+    zkPC' = zkPC + 1 + doJMP * (addr - (zkPC + 1));
+    
+    // Publics
+    public input = FREE(0);
+    public output = A(%N-1);
+    Global.L1*(FREE - :input) = 0;
+    L16*(A - :output) = 0;
+
+    // ROM Plookups;
+    {CONST, inA, inB, inFREE, setA, setB, JMPZ, offset, zkPC} in
+    {Rom.CONST, Rom.inA, Rom.inB, Rom.inFREE, Rom.setA, Rom.setB, Rom.JMPZ, Rom.offset, Rom.line};

@@ -1,0 +1,15 @@
+
+start: ; entry point
+    ${getAFreeInput()} => A               
+    -3 => B                               
+                                :ADD                                  
+    A                           :JMPZ(finalWait)                    
+    A => B
+    ${getAnotherFreeInput()} => A
+                                :ADD  
+                          
+             
+finalWait: 
+    ${beforeLast()}             :JMPZ(finalWait)  
+    0 => A, B                   :JMP(start)       
+; end

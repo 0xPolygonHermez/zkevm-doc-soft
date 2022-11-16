@@ -1,0 +1,229 @@
+{
+ "nCommitments": 2,
+ "nQ": 1,
+ "nIm": 1,
+ "nConstants": 1,
+ "publics": [
+  {
+   "polType": "cmP",
+   "polId": 0,
+   "idx": 1023,
+   "id": 0,
+   "name": "out"
+  }
+ ],
+ "references": {
+  "mFibonacci.ISLAST": {
+   "type": "constP",
+   "id": 0,
+   "polDeg": 1024,
+   "isArray": false
+  },
+  "mFibonacci.a": {
+   "type": "cmP",
+   "id": 0,
+   "polDeg": 1024,
+   "isArray": false
+  },
+  "mFibonacci.b": {
+   "type": "cmP",
+   "id": 1,
+   "polDeg": 1024,
+   "isArray": false
+  },
+  "mFibonacci.ab": {
+   "type": "imP",
+   "id": 0,
+   "polDeg": 1024,
+   "isArray": false
+  }
+ },
+ "expressions": [
+  {
+   "op": "mul",
+   "deg": 1,
+   "idQ": 0,
+   "values": [
+    {
+     "op": "cm",
+     "deg": 1,
+     "id": 0,
+     "next": false
+    },
+    {
+     "op": "cm",
+     "deg": 1,
+     "id": 1,
+     "next": false
+    }
+   ]
+  },
+  {
+   "op": "sub",
+   "deg": 2,
+   "values": [
+    {
+     "op": "mul",
+     "deg": 2,
+     "values": [
+      {
+       "op": "sub",
+       "deg": 1,
+       "values": [
+        {
+         "op": "number",
+         "deg": 0,
+         "value": "1"
+        },
+        {
+         "op": "const",
+         "deg": 1,
+         "id": 0,
+         "next": false
+        }
+       ]
+      },
+      {
+       "op": "sub",
+       "deg": 1,
+       "values": [
+        {
+         "op": "cm",
+         "deg": 1,
+         "id": 0,
+         "next": true
+        },
+        {
+         "op": "cm",
+         "deg": 1,
+         "id": 1,
+         "next": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "op": "number",
+     "deg": 0,
+     "value": "0"
+    }
+   ]
+  },
+  {
+   "op": "sub",
+   "deg": 2,
+   "values": [
+    {
+     "op": "mul",
+     "deg": 2,
+     "values": [
+      {
+       "op": "sub",
+       "deg": 1,
+       "values": [
+        {
+         "op": "number",
+         "deg": 0,
+         "value": "1"
+        },
+        {
+         "op": "const",
+         "deg": 1,
+         "id": 0,
+         "next": false
+        }
+       ]
+      },
+      {
+       "op": "sub",
+       "deg": 1,
+       "values": [
+        {
+         "op": "cm",
+         "deg": 1,
+         "id": 1,
+         "next": true
+        },
+        {
+         "op": "exp",
+         "deg": 1,
+         "id": 0,
+         "next": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "op": "number",
+     "deg": 0,
+     "value": "0"
+    }
+   ],
+   "deps": [
+    0
+   ]
+  },
+  {
+   "op": "sub",
+   "deg": 2,
+   "values": [
+    {
+     "op": "mul",
+     "deg": 2,
+     "values": [
+      {
+       "op": "const",
+       "deg": 1,
+       "id": 0,
+       "next": false
+      },
+      {
+       "op": "sub",
+       "deg": 1,
+       "values": [
+        {
+         "op": "cm",
+         "deg": 1,
+         "id": 0,
+         "next": false
+        },
+        {
+         "op": "public",
+         "deg": 0,
+         "id": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "op": "number",
+     "deg": 0,
+     "value": "0"
+    }
+   ]
+  }
+ ],
+ "polIdentities": [
+  {
+   "e": 1,
+   "fileName": "mfibonacci.pil",
+   "line": 12
+  },
+  {
+   "e": 2,
+   "fileName": "mfibonacci.pil",
+   "line": 13
+  },
+  {
+   "e": 3,
+   "fileName": "mfibonacci.pil",
+   "line": 15
+  }
+ ],
+ "plookupIdentities": [],
+ "permutationIdentities": [],
+ "connectionIdentities": []
+}

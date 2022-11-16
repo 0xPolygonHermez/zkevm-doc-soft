@@ -1,0 +1,15 @@
+// mfibonacci.pil
+
+constant %N = 1024;
+
+namespace mFibonacci(%N);
+   pol constant ISLAST;    // 0,0,0,0,.....,1
+   pol commit a, b;
+   pol ab = a*b;
+   // publics
+   public out = a(%N-1);
+   // transition constraints
+   (1-ISLAST) * (a' - b) = 0;
+   (1-ISLAST) * (b' - (ab)) = 0;
+   // boundary constraint
+   ISLAST *( a - :out) = 0; 
